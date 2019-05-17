@@ -1,7 +1,18 @@
 * {
   margin: 0;
   padding: 0;
-  line-height: 1; }
+  line-height: 1;
+  box-sizing: border-box;
+  font-size: 12px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; }
+
+li {
+  list-style-type: none; }
 
 .pupup {
-  width: 300px; }
+  width: 240px;
+  padding: 20px; }
+  .pupup h2 {
+    margin: 10px;
+    text-align: center;
+    font-weight: lighter; }
