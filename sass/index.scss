@@ -1,14 +1,21 @@
 @import "base";
 @import "search";
-
+html,
+body {
+  background-color: #154b70;
+  color: #fff;
+}
 li {
   list-style-type: none;
 }
 .pupup {
   width: 240px;
-  padding: 20px;
+  padding: 10px;
   #qrcode {
     margin: 10px 0;
+    text-align: center;
+    background-color: #fff;
+    padding: 10px;
   }
   h1 {
     text-align: center;
@@ -21,5 +28,35 @@ li {
     font-size: 12px;
     text-align: center;
     font-weight: lighter;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      padding: 20px;
+      flex-grow: 1;
+      color: #ffffff;
+      text-align: center;
+      margin: 1px;
+      &:nth-child(6n + 1) {
+        background-color: #3bb6dd;
+      }
+      &:nth-child(6n + 2) {
+        background-color: #55dda9;
+      }
+      &:nth-child(6n + 3) {
+        background-color: #f77657;
+      }
+      &:nth-child(6n + 4) {
+        background-color: #f8cc34;
+      }
+      &:nth-child(6n + 5) {
+        background-color: #f16375;
+      }
+      &:nth-child(6n + 6) {
+        background-color: #9d7ac3;
+      }
+    }
   }
 }

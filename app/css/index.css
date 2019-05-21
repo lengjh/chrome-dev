@@ -10,14 +10,22 @@
   width: 100%;
   border: none; }
 
+html,
+body {
+  background-color: #154b70;
+  color: #fff; }
+
 li {
   list-style-type: none; }
 
 .pupup {
   width: 240px;
-  padding: 20px; }
+  padding: 10px; }
   .pupup #qrcode {
-    margin: 10px 0; }
+    margin: 10px 0;
+    text-align: center;
+    background-color: #fff;
+    padding: 10px; }
   .pupup h1 {
     text-align: center;
     font-size: 16px;
@@ -28,3 +36,24 @@ li {
     font-size: 12px;
     text-align: center;
     font-weight: lighter; }
+  .pupup ul {
+    display: flex;
+    flex-wrap: wrap; }
+    .pupup ul li {
+      padding: 20px;
+      flex-grow: 1;
+      color: #ffffff;
+      text-align: center;
+      margin: 1px; }
+      .pupup ul li:nth-child(6n + 1) {
+        background-color: #3bb6dd; }
+      .pupup ul li:nth-child(6n + 2) {
+        background-color: #55dda9; }
+      .pupup ul li:nth-child(6n + 3) {
+        background-color: #f77657; }
+      .pupup ul li:nth-child(6n + 4) {
+        background-color: #f8cc34; }
+      .pupup ul li:nth-child(6n + 5) {
+        background-color: #f16375; }
+      .pupup ul li:nth-child(6n + 6) {
+        background-color: #9d7ac3; }
