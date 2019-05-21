@@ -2,11 +2,11 @@
 //   console.log(response.farewell);
 // });
 
-chrome.tabs.getSelected(null, function (tab) {
+chrome.tabs.getSelected(null, function(tab) {
   console.log(tab);
-
+  document.querySelector("h1").innerHTML = tab.title;
   var qrcode = new QRCode(document.getElementById("qrcode"), {
-    width: 200,//设置宽高
+    width: 200, //设置宽高
     height: 200
   });
   qrcode.makeCode(tab.url);
