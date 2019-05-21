@@ -9,26 +9,7 @@
     "64": "./icons/64.png",
     "72": "./icons/72.png"
   },
-  "permissions": [
-    "clipboardWrite",
-    "management",
-    "activeTab",
-    "history",
-    "background",
-    "bookmarks",
-    "cookies",
-    "contentSettings",
-    "contextMenus",
-    "browsingData",
-    "tabs",
-    "notifications",
-    "idle",
-    "<all_urls>",
-    "*://*/",
-    "http://*/",
-    "https://*/",
-    "ftp://*/"
-  ],
+  "permissions": ["activeTab"],
   "options_page": "html/options.html",
   "chrome_url_overrides": {
     "newtab": "html/home.html"
@@ -39,7 +20,6 @@
   },
   "background": {
     "scripts": ["background.js"]
-    // "page": "html/background.html"
   },
   "content_scripts": [
     {
