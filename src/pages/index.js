@@ -1,26 +1,26 @@
-import { Button, Card, Modal } from 'antd';
-import css from './index.less';
+import { Button, Card, Modal } from "antd";
+// import css from './index.less';
 
 class App extends React.Component {
   state = { visible: false };
 
   showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   };
 
   handleOk = e => {
     console.log(e);
     this.setState({
-      visible: false,
+      visible: false
     });
   };
 
   handleCancel = e => {
     console.log(e);
     this.setState({
-      visible: false,
+      visible: false
     });
   };
 

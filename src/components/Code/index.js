@@ -1,14 +1,14 @@
 import { Radio, Input } from "antd";
-import base64 from 'Base64';
+import base64 from "Base64";
 import css from "./index.less";
 const { TextArea } = Input;
 var unicode = {
-  encode: function (str) {
+  encode: function(str) {
     return escape(str)
       .toLocaleLowerCase()
       .replace(/%u/gi, "\\u");
   },
-  decode: function (str) {
+  decode: function(str) {
     return unescape(str.replace(/\\u/gi, "%u"));
   }
 };
@@ -16,20 +16,23 @@ var unicode = {
 function strimHtml(str) {
   var reg = /<(?:.|\s)*?>/gi;
   return str.replace(reg, "");
-} export default class extends React.Component {
+}
+export default class extends React.Component {
   static async getInitialProps({ req }) {
     const userAgent = req ? req.headers["user-agent"] : navigator.userAgent;
     return { userAgent };
   }
   constructor(props) {
     super(props);
-    this.state = { visible: false, codeType: 1, beforeValue: '', afterValue: '' };
+    this.state = {
+      visible: false,
+      codeType: 1,
+      beforeValue: "",
+      afterValue: ""
+    };
     this.onChange = this.onChange.bind(this);
     this.textChange = this.textChange.bind(this);
   }
-
-  // componentDidMount() {  }
-
 
   onChange(ev) {
     this.setState({ codeType: ev.target.value });
@@ -41,45 +44,42 @@ function strimHtml(str) {
     switch (type) {
       case 1:
         try {
-          afterValue = base64.btoa(window.unescape(window.encodeURIComponent(beforeValue)));
-        } catch (error) {
-        }
+          afterValue = base64.btoa(
+            window.unescape(window.encodeURIComponent(beforeValue))
+          );
+        } catch (error) {}
         break;
       case 2:
         try {
-          afterValue = window.decodeURIComponent(window.escape(base64.atob(beforeValue)));
-        } catch (error) {
-        }
+          afterValue = window.decodeURIComponent(
+            window.escape(base64.atob(beforeValue))
+          );
+        } catch (error) {}
         break;
       case 3:
         try {
           afterValue = window.encodeURIComponent(beforeValue);
-        } catch (error) {
-        }
+        } catch (error) {}
         break;
       case 4:
         try {
           afterValue = window.decodeURIComponent(beforeValue);
-        } catch (error) {
-        }
+        } catch (error) {}
         break;
       case 5:
         try {
           afterValue = unicode.encode(beforeValue);
-        } catch (error) {
-        }
+        } catch (error) {}
         break;
       case 6:
         try {
           afterValue = unicode.decode(beforeValue);
-        } catch (error) {
-        }
+        } catch (error) {}
         break;
       case 7:
         try {
           afterValue = strimHtml(beforeValue);
-        } catch (error) {
-        }
+        } catch (error) {}
         break;
 
       default:
@@ -92,13 +92,17 @@ function strimHtml(str) {
     this.setState({ beforeValue: value });
 
     this.run(this.state.codeType);
-
   }
   render() {
     return (
       <>
         <div className={css.canvas}>
-          <Radio.Group onChange={this.onChange} onClick={this.onChange} value={this.state.codeType} buttonStyle="solid">
+          <Radio.Group
+            onChange={this.onChange}
+            onClick={this.onChange}
+            value={this.state.codeType}
+            buttonStyle="solid"
+          >
             <Radio.Button value={1}>Base64编码</Radio.Button>
             <Radio.Button value={2}>Base64解码</Radio.Button>
             <Radio.Button value={3}>Url编码</Radio.Button>
@@ -109,8 +113,16 @@ function strimHtml(str) {
           </Radio.Group>
         </div>
         <div className={css.codeBox}>
-          <div><TextArea value={this.state.beforeValue} onChange={this.textChange} onKeyUp={this.textChange} /></div>
-          <div><TextArea readOnly value={this.state.afterValue} /></div>
+          <div>
+            <TextArea
+              value={this.state.beforeValue}
+              onChange={this.textChange}
+              onKeyUp={this.textChange}
+            />
+          </div>
+          <div>
+            <TextArea readOnly value={this.state.afterValue} />
+          </div>
         </div>
       </>
     );

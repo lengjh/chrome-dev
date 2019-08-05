@@ -1,6 +1,6 @@
-import { Input, } from "antd";
+import { Input } from "antd";
 import css from "./index.less";
-var QRCode = require('qrcode')
+var QRCode = require("qrcode");
 
 export default class extends React.Component {
   static async getInitialProps({ req }) {
@@ -8,38 +8,33 @@ export default class extends React.Component {
     return { userAgent };
   }
   componentDidMount() {
-
     const { canvas } = this.refs;
     this.canvas = canvas;
 
     this.createQRCode(this.state.text);
     try {
-      chrome.tabs.getSelected(null, (tab) => {
+      chrome.tabs.getSelected(null, tab => {
         console.log(tab);
         console.log(tab.url);
         this.setState({ text: tab.url, title: tab.title });
       });
-    } catch (error) {
-
-    }
-
+    } catch (error) {}
   }
   constructor(props) {
     super(props);
-    this.state = { visible: false, title: '', text: '请输入内容' };
+    this.state = { visible: false, title: "", text: "" };
     this.setQCode = this.setQCode.bind(this);
     this.createQRCode = this.createQRCode.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-
   createQRCode(text) {
-    QRCode.toCanvas(this.canvas, text, { width: 150 }, (error) => {
+    QRCode.toCanvas(this.canvas, text, { width: 150 }, error => {
       if (error) {
         return console.error(error);
       }
-      console.log('success!');
-    })
+      console.log("success!");
+    });
   }
   setQCode(ev) {
     const value = ev.target.value;
@@ -48,18 +43,16 @@ export default class extends React.Component {
     this.createQRCode(value);
   }
   onChange(ev) {
-    let json = '{}';
+    let json = "{}";
     let value = ev.target.value;
     try {
       value = eval(`(${value})`);
       value = JSON.stringify(value);
-    } catch (error) {
-
-    }
+    } catch (error) {}
 
     try {
       json = JSON.parse(value);
-    } catch (error) { }
+    } catch (error) {}
     if (json) {
       this.setState({ json: json });
     }
@@ -69,8 +62,13 @@ export default class extends React.Component {
     return (
       <div className={css.canvas}>
         <h2>扫描获取二维码信息</h2>
-        <canvas ref="canvas" title={this.state.text}></canvas>
-        <Input defaultValue={this.state.text} value={this.state.text} onChange={this.setQCode} />
+        <canvas ref="canvas" title={this.state.text} />
+        <Input
+          defaultValue={this.state.text}
+          value={this.state.text}
+          onChange={this.setQCode}
+          placeholder="输入二维码内容"
+        />
       </div>
     );
   }
