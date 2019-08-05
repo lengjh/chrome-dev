@@ -1,0 +1,128 @@
+@bgColor1: #4CDA63;
+@bgColor2: #FFFFFF;
+@bgColor3: #EAF0F5;
+
+body {
+  min-width: 300px;
+  margin: auto;
+  line-height: 1;
+  padding-top: 20px;
+  background: -webkit-linear-gradient(@bgColor1 0%, @bgColor1 30%, @bgColor2 30%, @bgColor3 31%, @bgColor2 100%);
+}
+
+* {
+  box-sizing: border-box;
+
+}
+
+.cil {
+  @size: 80px;
+  top: @size /3;
+  left: 50%;
+  margin-left: -@size/2;
+  position: absolute;
+  width: @size;
+  height: @size;
+  line-height: @size;
+  border-radius: @size;
+  text-align: center;
+  color: #333;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+h2 {
+  font-size: 14px;
+  text-align: center;
+  color: #999999;
+}
+
+.canvas {
+  position: relative;
+  text-align: center;
+  margin: 10px;
+}
+
+.box {
+  background-color: #fff;
+  margin: 20px 10px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+ul,
+li {
+  padding: 0;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    width: 50%;
+    list-style: none;
+    font-size: 12px;
+    // box-shadow: 1px 0px 0 inset rgba(255, 255, 255, 0.2), 0px 1px 0 inset rgba(0, 0, 0, 0.2);
+    // border-bottom: 1px solid #00d4dc;
+    // border-top: 1px solid #00c4cc;
+    // border-left: 1px solid #00d4dc;
+    // border-right: 1px solid #00c4cc;
+
+    span {
+      margin-top: 5px;
+    }
+
+    &>div {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+      padding: 10px;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      border-radius: 10px;
+      // box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    &:nth-child(1) {
+
+      &>div {
+        background-color: #BA97FE;
+        color: #6936cc;
+      }
+    }
+
+    &:nth-child(2) {
+      &>div {
+        background-color: #FE96E2;
+        color: #9e4586;
+      }
+    }
+
+    &:nth-child(3) {
+
+      &>div {
+        background-color: #FFFFBB;
+        color: #F2C326;
+      }
+    }
+
+    &:nth-child(4) {
+      &>div {
+        background-color: #BAFFC8;
+        color: #62B975;
+      }
+    }
+
+    &>span {
+      display: block;
+    }
+
+    i {
+      // margin-right: 10px;
+      font-size: 32px;
+      color: #666666;
+    }
+  }
+}

@@ -7,7 +7,7 @@
     "32": "./icons/32.png",
     "48": "./icons/48.png",
     "64": "./icons/64.png",
-    "72": "./icons/72.png"
+    "128": "./icons/128.png"
   },
   "permissions": ["activeTab"],
   "options_page": "html/options.html",

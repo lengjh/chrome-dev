@@ -1,6 +1,5 @@
 import { Button, Card, Modal } from 'antd';
 import css from './index.less';
-console.log('css', css);
 
 class App extends React.Component {
   state = { visible: false };
