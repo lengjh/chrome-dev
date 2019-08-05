@@ -1,0 +1,14 @@
+node_modules
+*/node_modules/*
+*/.sass-cache/*
+*/.eslintcache/*
+*/logs/*
+.next
+.next/**
+*.log
+.history
+node_modules/
+.eslintcache
+/build
+dist
+/out
