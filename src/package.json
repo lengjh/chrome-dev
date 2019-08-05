@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next -p 3001",
     "build": "next build",
-    "export": "next build && next export -o ../app",
+    "export": "next build && next export -o ../app/out",
     "start": "next start"
   },
   "keywords": [],

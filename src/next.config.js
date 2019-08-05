@@ -21,7 +21,6 @@ const nextOption = {
   out: "./myout",
   assetPrefix: "./",
   webpack: (config, { isServer }) => {
-    console.log("config", config);
     if (isServer) {
       const antStyles = /antd\/.*?\/style\/css.*?/;
       const origExternals = [...config.externals];
