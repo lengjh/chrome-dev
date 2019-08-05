@@ -1,5 +1,8 @@
-import { Tabs, Input, Button, Card, Modal } from "antd";
+import { Tabs, Radio, Input, Button, Card, Modal } from "antd";
 import JSONVIEW from "../components/JsonView";
+import QRCode from '../components/QRCode';
+import Code from '../components/Code';
+
 // import css from "./json-view.less";
 const { TabPane } = Tabs;
 export default class extends React.Component {
@@ -16,7 +19,7 @@ export default class extends React.Component {
     let json;
     try {
       json = JSON.parse(ev.target.value);
-    } catch (error) {}
+    } catch (error) { }
     if (json) {
       this.setState({ json: json });
     }
@@ -27,15 +30,16 @@ export default class extends React.Component {
       console.log(key);
     }
     return (
-      <Tabs animated={false} defaultActiveKey="1" onChange={callback}>
+      <Tabs animated={false} defaultActiveKey="3" onChange={callback}>
         <TabPane tab="Json view" key="1">
           <JSONVIEW />
         </TabPane>
         <TabPane tab="QR code" key="2">
-          Content of Tab Pane 2
+          <QRCode />
+
         </TabPane>
         <TabPane tab="编码转换" key="3">
-          Content of Tab Pane 3
+          <Code />
         </TabPane>
         <TabPane tab="身份证号码生成" key="4">
           Content of Tab Pane 3
