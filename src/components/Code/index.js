@@ -1,6 +1,9 @@
-import { Radio, Input } from "antd";
+import { Radio, Input, Card } from "antd";
 import base64 from "Base64";
 import css from "./index.less";
+var md5 = require('md5');
+
+console.log(md5('message'));
 const { TextArea } = Input;
 var unicode = {
   encode: function (str) {
@@ -27,8 +30,8 @@ export default class extends React.Component {
     this.state = {
       visible: false,
       codeType: 1,
-      beforeValue: "",
-      afterValue: ""
+      beforeValue: '',
+      afterValue: ''
     };
     this.onChange = this.onChange.bind(this);
     this.textChange = this.textChange.bind(this);
@@ -81,6 +84,14 @@ export default class extends React.Component {
           afterValue = strimHtml(beforeValue);
         } catch (error) { }
         break;
+      case 8:
+        try {
+          afterValue = md5(beforeValue);
+          if (!beforeValue.length) {
+            afterValue = '';
+          }
+        } catch (error) { }
+        break;
 
       default:
         break;
@@ -110,18 +121,25 @@ export default class extends React.Component {
             <Radio.Button value={5}>Unicode编码</Radio.Button>
             <Radio.Button value={6}>Unicode解码</Radio.Button>
             <Radio.Button value={7}>去除HTML</Radio.Button>
+            <Radio.Button value={8}>MD5加密</Radio.Button>
           </Radio.Group>
         </div>
         <div className={css.codeBox}>
           <div>
-            <TextArea
-              value={this.state.beforeValue}
-              onChange={this.textChange}
-              onKeyUp={this.textChange}
-            />
+            <Card title="原始内容">
+              <TextArea
+                style={{ border: 'none', outline: 'none' }}
+                value={this.state.beforeValue}
+                onChange={this.textChange}
+                onKeyUp={this.textChange}
+                placeholder="请输入内容"
+              />
+            </Card>
           </div>
           <div>
-            <TextArea readOnly value={this.state.afterValue} />
+            <Card title="编码结果">
+              <TextArea style={{ border: 'none', outline: 'none' }} readOnly value={this.state.afterValue} placeholder="输出结果" />
+            </Card>
           </div>
         </div>
       </>

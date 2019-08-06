@@ -57,7 +57,7 @@ export default class extends React.Component {
           <ReactJson
             displayDataTypes={true}
             src={this.state.json}
-            theme="monokai"
+            // theme="monokai"
             collapsed={false}
           />
         </div>

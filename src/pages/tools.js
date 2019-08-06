@@ -2,6 +2,7 @@ import { Tabs, Drawer, Switch, Icon, Select } from "antd";
 import JSONVIEW from "../components/JsonView";
 import QRCode from "../components/QRCode";
 import Code from "../components/Code";
+import ImageBase64 from "../components/ImageBase64";
 import css from "./tools.less";
 
 const { TabPane } = Tabs;
@@ -38,7 +39,7 @@ export default class extends React.Component {
     return obj[name] || null;
   }
   componentDidMount() {
-    let type = this.getQueryValue("type");
+    let type = this.getQueryValue("type") || '1';
     console.log(type);
     this.setState({ tabType: type });
   }
@@ -77,13 +78,17 @@ export default class extends React.Component {
           </TabPane>
           <TabPane tab="编码转换" key="3">
             <Code />
+
           </TabPane>
           <TabPane tab="身份证号码生成" key="4" disabled>
-            Content of Tab Pane 3
-        </TabPane>
+
+          </TabPane>
           <TabPane tab="银行卡号码生成" key="5" disabled>
-            Content of Tab Pane 3
-        </TabPane>
+
+          </TabPane>
+          <TabPane tab="图片Base64编码" key="6" >
+            <ImageBase64 />
+          </TabPane>
         </Tabs>
         <Icon type="menu" className={css.menu} onClick={this.showDrawer} />
         <Drawer

@@ -34,7 +34,7 @@ class App extends React.Component {
         <div className={css.box}>
           <div className={css.cil} />
           <QRCode />
-          <ul>
+          <ul className={css.ul}>
             <li>
               <a target="_blank" href="/html/tools.html?type=1">
                 <Icon type="credit-card" />
