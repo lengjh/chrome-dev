@@ -36486,6 +36486,7 @@ function (_React$Component) {
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("ul", {
+        className: _popup_less__WEBPACK_IMPORTED_MODULE_11___default.a.ul,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 37
