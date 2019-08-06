@@ -22,7 +22,7 @@ export default class extends React.Component {
   }
   constructor(props) {
     super(props);
-    this.state = { visible: false, title: "", text: "" };
+    this.state = { visible: false, title: "", text: "请输入内容" };
     this.setQCode = this.setQCode.bind(this);
     this.createQRCode = this.createQRCode.bind(this);
     this.onChange = this.onChange.bind(this);

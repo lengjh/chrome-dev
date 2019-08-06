@@ -15,6 +15,7 @@ export default class extends React.Component {
     super(props);
     this.state = { tabType: "1", json: { "2": 2 } };
     this.onChange = this.onChange.bind(this);
+    this.callback = this.callback.bind(this);
   }
   getQueryValue(name) {
     let search = location.search.slice(1);
@@ -41,16 +42,17 @@ export default class extends React.Component {
     }
     console.log(json, ev.target.value);
   }
+  callback(key) {
+    console.log(key);
+    this.setState({ tabType: key });
+  }
   render() {
-    function callback(key) {
-      console.log(key);
-    }
     return (
       <Tabs
         animated={false}
         defaultActiveKey={this.state.tabType}
         activeKey={this.state.tabType}
-        onChange={callback}
+        onChange={this.callback}
         className={"tab"}
       >
         <TabPane tab="Json view" key="1">
