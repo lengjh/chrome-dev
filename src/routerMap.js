@@ -1,6 +1,9 @@
-module.exports = async function(defaultPathMap) {
+module.exports = async function (defaultPathMap) {
   return {
     "/": { page: "/" },
-    "/popup": { page: "/popup" }
+    "/options": { page: "/options" },
+    "/home": { page: "/home" },
+    "/popup": { page: "/popup" },
+    "/tools": { page: "/tools" }
   };
 };

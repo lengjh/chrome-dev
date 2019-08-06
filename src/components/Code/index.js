@@ -3,12 +3,12 @@ import base64 from "Base64";
 import css from "./index.less";
 const { TextArea } = Input;
 var unicode = {
-  encode: function(str) {
+  encode: function (str) {
     return escape(str)
       .toLocaleLowerCase()
       .replace(/%u/gi, "\\u");
   },
-  decode: function(str) {
+  decode: function (str) {
     return unescape(str.replace(/\\u/gi, "%u"));
   }
 };
@@ -47,39 +47,39 @@ export default class extends React.Component {
           afterValue = base64.btoa(
             window.unescape(window.encodeURIComponent(beforeValue))
           );
-        } catch (error) {}
+        } catch (error) { }
         break;
       case 2:
         try {
           afterValue = window.decodeURIComponent(
             window.escape(base64.atob(beforeValue))
           );
-        } catch (error) {}
+        } catch (error) { }
         break;
       case 3:
         try {
           afterValue = window.encodeURIComponent(beforeValue);
-        } catch (error) {}
+        } catch (error) { }
         break;
       case 4:
         try {
           afterValue = window.decodeURIComponent(beforeValue);
-        } catch (error) {}
+        } catch (error) { }
         break;
       case 5:
         try {
           afterValue = unicode.encode(beforeValue);
-        } catch (error) {}
+        } catch (error) { }
         break;
       case 6:
         try {
           afterValue = unicode.decode(beforeValue);
-        } catch (error) {}
+        } catch (error) { }
         break;
       case 7:
         try {
           afterValue = strimHtml(beforeValue);
-        } catch (error) {}
+        } catch (error) { }
         break;
 
       default:
@@ -96,7 +96,7 @@ export default class extends React.Component {
   render() {
     return (
       <>
-        <div className={css.canvas}>
+        <div className={css.buttonBox}>
           <Radio.Group
             onChange={this.onChange}
             onClick={this.onChange}

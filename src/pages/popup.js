@@ -36,32 +36,32 @@ class App extends React.Component {
           <QRCode />
           <ul>
             <li>
-              <a href="/tools?type=1">
+              <a target="_blank" href="/html/tools.html?type=1">
                 <Icon type="credit-card" />
                 <span>JSON View</span>
               </a>
             </li>
             <li>
-              <a href="/tools?type=2">
+              <a target="_blank" href="/html/tools.html?type=2">
                 <Icon type="qrcode" />
                 <span>二维码生成</span>
               </a>
             </li>
             <li>
-              <a href="/tools?type=3">
+              <a target="_blank" href="/html/tools.html?type=3">
                 <Icon type="code" />
                 <span>编辑转换</span>
               </a>
             </li>
             <li>
-              <a href="/tools?type=4">
+              <a target="_blank" href="/html/tools.html?type=4">
                 <Icon type="user" />
                 <span>身份证生成</span>
               </a>
             </li>
 
             <li>
-              <a href="/tools?type=5">
+              <a target="_blank" href="/html/tools.html?type=5">
                 <Icon type="credit-card" />
                 <span>银行卡生成</span>
               </a>

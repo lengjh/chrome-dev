@@ -1,22 +1,32 @@
-import { Tabs, Radio, Input, Button, Card, Modal } from "antd";
+import { Tabs, Drawer, Switch, Icon, Select } from "antd";
 import JSONVIEW from "../components/JsonView";
 import QRCode from "../components/QRCode";
 import Code from "../components/Code";
+import css from "./tools.less";
 
-// import css from "./json-view.less";
 const { TabPane } = Tabs;
+const { Option } = Select;
 export default class extends React.Component {
   static async getInitialProps({ req }) {
     const userAgent = req ? req.headers["user-agent"] : navigator.userAgent;
-    const query = req.query;
-    return { userAgent, query };
+    return { userAgent };
   }
   constructor(props) {
     super(props);
-    this.state = { tabType: "1", json: { "2": 2 } };
+    this.state = { tabType: "1", json: { "2": 2 }, visible: false };
     this.onChange = this.onChange.bind(this);
     this.callback = this.callback.bind(this);
   }
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
   getQueryValue(name) {
     let search = location.search.slice(1);
     let obj = {};
@@ -36,7 +46,7 @@ export default class extends React.Component {
     let json;
     try {
       json = JSON.parse(ev.target.value);
-    } catch (error) {}
+    } catch (error) { }
     if (json) {
       this.setState({ json: json });
     }
@@ -46,31 +56,57 @@ export default class extends React.Component {
     console.log(key);
     this.setState({ tabType: key });
   }
+  switchOnChange(checked) {
+    console.log(`switch to ${checked}`);
+  }
   render() {
     return (
-      <Tabs
-        animated={false}
-        defaultActiveKey={this.state.tabType}
-        activeKey={this.state.tabType}
-        onChange={this.callback}
-        className={"tab"}
-      >
-        <TabPane tab="Json view" key="1">
-          <JSONVIEW />
+      <>
+        <Tabs
+          animated={false}
+          defaultActiveKey={this.state.tabType}
+          activeKey={this.state.tabType}
+          onChange={this.callback}
+          className={"tab"}
+        >
+          <TabPane tab="JSON View" key="1">
+            <JSONVIEW />
+          </TabPane>
+          <TabPane tab="QR code" key="2">
+            <QRCode />
+          </TabPane>
+          <TabPane tab="编码转换" key="3">
+            <Code />
+          </TabPane>
+          <TabPane tab="身份证号码生成" key="4" disabled>
+            Content of Tab Pane 3
         </TabPane>
-        <TabPane tab="QR code" key="2">
-          <QRCode />
+          <TabPane tab="银行卡号码生成" key="5" disabled>
+            Content of Tab Pane 3
         </TabPane>
-        <TabPane tab="编码转换" key="3">
-          <Code />
-        </TabPane>
-        <TabPane tab="身份证号码生成" key="4">
-          Content of Tab Pane 3
-        </TabPane>
-        <TabPane tab="银行卡号码生成" key="5">
-          Content of Tab Pane 3
-        </TabPane>
-      </Tabs>
+        </Tabs>
+        <Icon type="menu" className={css.menu} onClick={this.showDrawer} />
+        <Drawer
+          title="设置"
+          placement="right"
+          // closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible}
+        >
+          <dl>
+            <dt>开启记忆</dt>
+            <dd><Switch defaultChecked checkedChildren="开" unCheckedChildren="关" onChange={this.switchOnChange} /></dd>
+          </dl>
+          <dl>
+            <dt>Code 主题</dt>
+            <dd>
+              <Select defaultValue="ocean" style={{ width: '100%' }}>
+                <Option value="ocean">ocean</Option>
+              </Select>
+            </dd>
+          </dl>
+        </Drawer>
+      </>
     );
   }
 }

@@ -16,7 +16,7 @@
   },
   "browser_action": {
     "default_title": "Click show QR",
-    "default_popup": "out/popup.html"
+    "default_popup": "html/popup.html"
   },
   "background": {
     "scripts": ["background.js"]

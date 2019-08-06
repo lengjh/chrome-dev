@@ -14,31 +14,32 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <style>{`
-            body { margin: 0 } html,
-            body {
-            height: 100%;
-            overflow: hidden;
-            }
-
-            #__next {
-            height: 100%;
-            }
-            .tab{
+          <style>
+            {`
+              body { 
+                margin: 0;
+              }
+              #__next {
+                height: 100%;
+              }
+              .tab{
                 height:100%;
                 display:flex;
                 flex-direction:column;
-            }
-            .tab .ant-tabs-content{
+              }
+              .tab .ant-tabs-content{
                 flex:1;
                 overflow:hidden;
-            }
-            .tab .ant-tabs-tabpane{
+              }
+              .tab .ant-tabs-tabpane{
                 height:100%;
                 overflow:hidden;
-            }
-
-`}</style>
+              }
+              .ant-input,textarea{
+                resize:none;
+              }
+          `}
+          </style>
         </Head>
         <body className="custom_class">
           <Main />
