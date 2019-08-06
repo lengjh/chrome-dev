@@ -1,6 +1,6 @@
-import { Button, Card, Modal } from "antd";
-// import css from './index.less';
-
+import { Button, Card, Modal, Input, Icon } from "antd";
+import css from './home.less';
+const { Search } = Input;
 class App extends React.Component {
   state = { visible: false };
 
@@ -26,22 +26,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <Card title="Antd DEMO">
-        <h1>Hello ,nextjs,antd</h1>
-        <Button type="primary" onClick={this.showModal}>
-          Open Modal
-        </Button>
-        <Modal
-          title="Basic Modal"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
-      </Card>
+      <div className={css.box}>
+        <div className={css.search}><Search placeholder="Search Google" /></div>
+      </div>
     );
   }
 }
