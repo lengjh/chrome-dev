@@ -2,6 +2,7 @@ import { Input } from "antd";
 import css from "./index.less";
 var QRCode = require("qrcode");
 
+const { TextArea } = Input;
 export default class extends React.Component {
   static async getInitialProps({ req }) {
     const userAgent = req ? req.headers["user-agent"] : navigator.userAgent;
@@ -18,7 +19,7 @@ export default class extends React.Component {
         console.log(tab.url);
         this.setState({ text: tab.url, title: tab.title });
       });
-    } catch (error) {}
+    } catch (error) { }
   }
   constructor(props) {
     super(props);
@@ -29,11 +30,11 @@ export default class extends React.Component {
   }
 
   createQRCode(text) {
-    QRCode.toCanvas(this.canvas, text, { width: 150 }, error => {
+    QRCode.toCanvas(this.canvas, text, { width: 150, errorCorrectionLevel: 'H' }, error => {
       if (error) {
-        return console.error(error);
+        // return console.error(error);
       }
-      console.log("success!");
+
     });
   }
   setQCode(ev) {
@@ -48,11 +49,11 @@ export default class extends React.Component {
     try {
       value = eval(`(${value})`);
       value = JSON.stringify(value);
-    } catch (error) {}
+    } catch (error) { }
 
     try {
       json = JSON.parse(value);
-    } catch (error) {}
+    } catch (error) { }
     if (json) {
       this.setState({ json: json });
     }
@@ -62,13 +63,15 @@ export default class extends React.Component {
     return (
       <div className={css.canvas}>
         <h2>扫描获取二维码信息</h2>
-        <canvas ref="canvas" title={this.state.text} />
-        <Input
-          defaultValue={this.state.text}
-          value={this.state.text}
-          onChange={this.setQCode}
-          placeholder="输入二维码内容"
-        />
+        <div>
+          <canvas ref="canvas" title={this.state.text} />
+          <TextArea
+            // defaultValue={this.state.text}
+            value={this.state.text}
+            onChange={this.setQCode}
+            placeholder="输入二维码内容" />
+        </div>
+
       </div>
     );
   }
